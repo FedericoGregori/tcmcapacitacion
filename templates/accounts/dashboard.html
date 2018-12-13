@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}
+| Panel
+{% endblock title %}
+
+{% block content %}
+<section id="showcase-inner" class="py-5 text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4"> Cursos </h1>
+        <p class="lead">TCM Capacitación</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'cursos' %}">
+            <i class="fas fa-home"></i> Cursos </a>
+        </li>
+        <li class="breadcrumb-item active"> TCM Capacitación </li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+{% include 'partials/_alerts.html' %}
+
+<section id="listings" class="py-4">
+  <div class="container">
+    <div class="row">
+      {% if cursos %}
+        {% for curso in cursos %}
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card listing-preview">
+              <img class="card-img-top" src="{{ curso.photo_main.url }}" alt="">
+              {% comment %} <div class="card-img-overlay">
+                <h2>
+                  <span class="badge badge-secondary text-white">${{ listing.price | intcomma}}</span>
+                </h2>
+              </div> {% endcomment %}
+              <div class="card-body">
+                <div class="listing-heading text-center">
+                  <h4 class="text-primary">{{ curso.title }}</h4>
+                  {% comment %} <p>
+                    <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }} {{ listing.state}}, {{ listing.zipcode }}</p> {% endcomment %}
+                </div>
+                <hr>
+                <hr>
+                <a href="{% url 'clases' curso.id %}" class="btn btn-primary btn-block"> Ir al curso </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-md-12">
+          <p>No existen cursos dispobibles</p>
+        </div>
+      {% endif %}
+    </div>  
+  </div>
+</section>
+
+  {% comment %} <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Welcome John</h2>
+        <p>Here are the property listings that you have inquired about</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Property</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>22</td>
+              <td>45 Drivewood Circle</td>
+              <td>
+                <a class="btn btn-light" href="#">View Listing</a>
+              </td>
+            </tr>
+            <tr>
+              <td>43</td>
+              <td>22 Westbrook rd</td>
+              <td>
+                <a class="btn btn-light" href="#">View Listing</a>
+              </td>
+            </tr>
+            <tr>
+              <td>31</td>
+              <td>12 Samson Ave</td>
+              <td>
+                <a class="btn btn-light" href="#">View Listing</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> {% endcomment %}
+{% endblock %}

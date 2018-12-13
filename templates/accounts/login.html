@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}
+| Inicio
+{% endblock %}
+
+{% block content %}
+  <!-- Showcase -->
+  <section id="showcase">
+    <div class="container text-center">
+      <div class="home-search p-5">
+        <section id="login" class="py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 mx-auto">
+                <div class="card">
+                  <div class="card-header bg-primary text-white">
+                    <h4><i class="fas fa-sign-in-alt"></i> Acceso </h4>  
+                  </div>
+                    <div class="card-body">
+                    {% include 'partials/_alerts.html' %}
+                      <form action="{% url 'login' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                          <label for="username">Usuario</label>
+                          <input type="text" name="username" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="password2">Contraseña</label>
+                          <input type="password" name="password" class="form-control" required>
+                        </div>
+
+                      <input type="submit" value="Iniciar sesión" class="btn btn-secondary btn-block">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-5 bg-secondary text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <i class="fas fa-comment fa-4x mr-4"></i>
+          <hr>
+          <h3>Material de Consulta Rápida</h3>
+          <p>Este sitio se desarrolla en base a la idea de brindar rápida accesibilidad de manera eficiente y simple a la información para tener una experiencia amigable con el sistema ERP de SOLTic S.R.L.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-clock fa-4x mr-4"></i>
+          <hr>
+          <h3>Tiempo y tranquilidad</h3>
+          <p>Mejora tu eficiencia laboral, estamos acá para que alcances tu nivel óptimo de comodidad y productividad.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-award fa-4x mr-4"></i>
+          <hr>
+          <h3>Documentación de primera</h3>
+          <p>Todo el materiar está redactado por profesionales que se dedican a la aprehensión e implementación de la base de este sistema, Odoo OpenERP por casi 10 años.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

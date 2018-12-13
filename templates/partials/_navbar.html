@@ -1,0 +1,90 @@
+{% load static %}
+
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+      {% if user.is_authenticated %}
+      <a class="navbar-brand" href="{% url 'dashboard' %}">
+        <img src="{% static 'img/logo.png' %}" class="logo" alt="">
+      </a>
+      {% else %}
+      <a class="navbar-brand" href="{% url 'login' %}">
+        <img src="{% static 'img/logo.png' %}" class="logo" alt="">
+      </a>
+      {% endif %}
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav">
+          {% if user.is_authenticated %}
+          <li
+            {% if 'listings' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+          >
+            <a class="nav-link" href="{% url 'dashboard' %}">Cursos</a>
+          </li>
+
+          <li
+            {% if 'about' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+          >
+            <a class="nav-link" href="{% url 'docs' %}"> Documentación </a>
+          </li>
+          {% endif %}
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+            <li
+            {% if 'dashboard' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+            >
+              <a class="nav-link" href="{% url 'dashboard' %}">
+               Bienvenido {{ user.username }} </a>
+            </li>
+            <li class="nav-item mr-3">
+              <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+              </a>
+              <form action="{% url 'logout' %}" method="POST" id="logout">
+                {% csrf_token %}
+                <input type="hidden">
+              </form>
+            </li>
+          {% else %}
+          <li
+            {% if '/' == request.path or 'accounts' in request.path %}
+            class="nav-item active mr-3"
+            {% else %}
+            class="nav-item mr-3"
+            {% endif %}
+          >
+          <a class="nav-link" href="{% url 'login' %}">
+            <i class="fas fa-sign-in-alt"></i>
+              Iniciar sesión</a>
+          </li>
+          <li
+            {% if 'register' in request.path %}
+            class="nav-item active mr-3"
+            {% else %}
+            class="nav-item mr-3"
+            {% endif %}
+          >
+          <a class="nav-link" href="{% url 'register' %}">
+            <i class="fas fa-user-plus"></i> Registro </a>
+          </li>
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </nav>
