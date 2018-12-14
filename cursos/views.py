@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import Clase, Curso
 
@@ -12,7 +12,7 @@ def cursos(request):
 
 def curso(request, curso_id):
   clases = Clase.objects.order_by('list_date').filter(course_id=curso_id)
-  curso = Curso.objects.all()
+  curso = get_object_or_404(Curso, pk=curso_id)
 
   context = {
     'clases' : clases,
