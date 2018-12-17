@@ -17,6 +17,15 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
+          <li
+            {% if 'docs' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+          >
+            <a class="nav-link" href="{% url 'docs' %}"> Documentación </a>
+          </li>
           {% if user.is_authenticated %}
           <li
             {% if 'listings' in request.path %}
@@ -26,16 +35,6 @@
             {% endif %}
           >
             <a class="nav-link" href="{% url 'dashboard' %}">Cursos</a>
-          </li>
-
-          <li
-            {% if 'about' in request.path %}
-              class="nav-item active mr-3"
-            {% else %}
-              class="nav-item mr-3"
-            {% endif %}
-          >
-            <a class="nav-link" href="{% url 'docs' %}"> Documentación </a>
           </li>
           {% endif %}
         </ul>
