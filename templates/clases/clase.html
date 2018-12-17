@@ -25,10 +25,10 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="{% url 'login' %}">Inicio</a>
+            <a href="{% url 'dashboard' %}">Cursos</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="{% url 'cursos' %}">Cursos</a>
+            <a href="javascript:history.go(-1)">Clases</a>
           </li>
           <li class="breadcrumb-item active">{{ clase.title }}</li>
         </ol>

@@ -23,10 +23,10 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="{% url 'login' %}">
-              <i class="fas fa-home"></i> Inicio </a>
+            <a href="{% url 'dashboard' %}">
+              <i class="fas fa-home"></i> Cursos </a>
           </li>
-          <li class="breadcrumb-item active"> Clases </li>
+          <li class="breadcrumb-item active"> {{ curso.title }} </li>
         </ol>
       </nav>
     </div>
