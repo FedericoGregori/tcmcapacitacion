@@ -81,7 +81,7 @@ div.form-group:nth-child(2) > label:nth-child(1) {
 
 #showcase-inner {
   background: url(../img/building.jpg) no-repeat top center fixed/cover;
-  -moz-background: url(../img/building.jpg) fixed;
+  background: url(../img/building.jpg) fixed;
   position: relative;
   overflow: hidden;
   min-height: 200px; }
